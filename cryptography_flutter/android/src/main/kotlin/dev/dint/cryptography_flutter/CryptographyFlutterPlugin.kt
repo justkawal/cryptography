@@ -116,7 +116,7 @@ class CryptographyFlutterPlugin : FlutterPlugin, MethodCallHandler {
         cipher.init(
                 Cipher.DECRYPT_MODE,
                 SecretKeySpec(secretKey, algo),
-                params,
+                params
         )
         val clearText: ByteArray
         try {
@@ -126,7 +126,7 @@ class CryptographyFlutterPlugin : FlutterPlugin, MethodCallHandler {
             return
         }
         result.success(hashMapOf(
-                "clearText" to clearText,
+                "clearText" to clearText
         ))
     }
 
@@ -177,14 +177,14 @@ class CryptographyFlutterPlugin : FlutterPlugin, MethodCallHandler {
         cipher.init(
                 Cipher.ENCRYPT_MODE,
                 SecretKeySpec(secretKey, algo),
-                params,
+                params
         )
         val cipherTextAndMac = cipher.doFinal(clearText)
         val cipherText = cipherTextAndMac.copyOfRange(0, cipherTextAndMac.size - macLength)
         val mac = cipherTextAndMac.copyOfRange(cipherTextAndMac.size - macLength, cipherTextAndMac.size)
         result.success(hashMapOf(
                 "cipherText" to cipherText,
-                "mac" to mac,
+                "mac" to mac
         ))
     }
 
@@ -232,7 +232,7 @@ class CryptographyFlutterPlugin : FlutterPlugin, MethodCallHandler {
 
         // Set result
         result.success(hashMapOf(
-                "signature" to signature,
+                "signature" to signature
         ))
     }
 
@@ -268,7 +268,7 @@ class CryptographyFlutterPlugin : FlutterPlugin, MethodCallHandler {
 
         // Set result
         result.success(hashMapOf(
-                "ok" to ok,
+                "ok" to ok
         ))
     }
 }
